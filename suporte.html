@@ -1,0 +1,529 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Suporte — Guarda-CNPJ</title>
+    <meta
+      name="description"
+      content="Central de suporte do Guarda-CNPJ: dúvidas, problemas com pagamento, ativação de licença, reembolso, recuperação de chave."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body {
+        font-family: "Inter", system-ui, sans-serif;
+        line-height: 1.6;
+        color: #0f172a;
+        background: #f8fafc;
+      }
+      nav {
+        background: #1e40af;
+        color: white;
+        padding: 1rem 1.5rem;
+      }
+      nav a {
+        color: white;
+        text-decoration: none;
+        margin-right: 1.5rem;
+        font-weight: 600;
+        font-size: 0.95rem;
+      }
+      nav a:hover { opacity: 0.85; }
+      header.hero {
+        background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%);
+        color: white;
+        padding: 3rem 1.5rem 4rem;
+        text-align: center;
+      }
+      header.hero h1 {
+        font-size: clamp(1.8rem, 4vw, 2.6rem);
+        font-weight: 800;
+        margin-bottom: 0.5rem;
+        letter-spacing: -0.02em;
+      }
+      header.hero p {
+        font-size: 1.05rem;
+        opacity: 0.92;
+        max-width: 640px;
+        margin: 0 auto;
+      }
+      main {
+        max-width: 880px;
+        margin: -2rem auto 0;
+        padding: 0 1.5rem 4rem;
+      }
+      .quick-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1rem;
+        margin-bottom: 2rem;
+      }
+      .quick {
+        background: white;
+        border-radius: 1rem;
+        padding: 1.25rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        border: 1px solid #e2e8f0;
+      }
+      .quick h3 {
+        font-size: 1rem;
+        font-weight: 700;
+        margin-bottom: 0.4rem;
+        color: #0f172a;
+      }
+      .quick p {
+        font-size: 0.85rem;
+        color: #64748b;
+      }
+      .quick a {
+        display: inline-block;
+        margin-top: 0.5rem;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: #2563eb;
+        text-decoration: none;
+      }
+      .quick a:hover { text-decoration: underline; }
+      section.card {
+        background: white;
+        border-radius: 1rem;
+        padding: 1.75rem;
+        margin-bottom: 1.25rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      }
+      h2 {
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        color: #1e293b;
+      }
+      h3 {
+        font-size: 1.05rem;
+        font-weight: 600;
+        margin-top: 1.2rem;
+        margin-bottom: 0.4rem;
+        color: #0f172a;
+      }
+      p, li {
+        color: #475569;
+        margin-bottom: 0.5rem;
+      }
+      ul, ol {
+        padding-left: 1.5rem;
+        margin-bottom: 0.5rem;
+      }
+      details {
+        border: 1px solid #e2e8f0;
+        border-radius: 0.5rem;
+        padding: 0.75rem 1rem;
+        margin-bottom: 0.5rem;
+      }
+      details summary {
+        cursor: pointer;
+        font-weight: 600;
+        color: #0f172a;
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      details summary::-webkit-details-marker { display: none; }
+      details summary::after {
+        content: '+';
+        font-size: 1.2rem;
+        color: #94a3b8;
+        line-height: 1;
+        transition: transform 0.2s;
+      }
+      details[open] summary::after {
+        content: '−';
+      }
+      details p {
+        margin-top: 0.5rem;
+      }
+      .contact {
+        background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+        border: 1px solid #bfdbfe;
+        border-radius: 1rem;
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+      }
+      .contact h3 {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #1e40af;
+        margin-top: 0;
+      }
+      .contact a.email {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        background: #2563eb;
+        color: white;
+        padding: 0.6rem 1rem;
+        border-radius: 0.5rem;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.95rem;
+        margin-top: 0.5rem;
+      }
+      .contact a.email:hover { background: #1d4ed8; }
+      .pill {
+        display: inline-block;
+        background: #fef3c7;
+        color: #92400e;
+        padding: 0.2rem 0.6rem;
+        border-radius: 999px;
+        font-size: 0.7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-left: 0.5rem;
+      }
+      code {
+        background: #f1f5f9;
+        padding: 0.1rem 0.4rem;
+        border-radius: 0.25rem;
+        font-size: 0.85em;
+        font-family: ui-monospace, "Cascadia Code", monospace;
+      }
+      footer {
+        text-align: center;
+        padding: 2rem 1.5rem;
+        color: #64748b;
+        font-size: 0.85rem;
+        border-top: 1px solid #e2e8f0;
+        background: white;
+        margin-top: 2rem;
+      }
+      footer a {
+        color: #2563eb;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="index.html">Guarda-CNPJ</a>
+      <a href="suporte.html">Suporte</a>
+      <a href="privacy.html">Privacidade</a>
+      <a href="terms.html">Termos</a>
+      <a href="non-affiliation.html">Não Afiliação</a>
+    </nav>
+
+    <header class="hero">
+      <h1>Como podemos ajudar?</h1>
+      <p>
+        Respostas rápidas para dúvidas comuns sobre pagamento, ativação,
+        privacidade e uso do Guarda-CNPJ.
+      </p>
+    </header>
+
+    <main>
+      <!-- Atalhos rápidos -->
+      <div class="quick-grid">
+        <div class="quick">
+          <h3>💳 Problemas com PIX</h3>
+          <p>Paguei e não liberou. Cobrança duplicada. Outros.</p>
+          <a href="#pagamento">Ver respostas →</a>
+        </div>
+        <div class="quick">
+          <h3>🔑 Não recebi a chave</h3>
+          <p>Cheque a caixa de spam. Ou recupere pelo e-mail.</p>
+          <a href="#chave">Ver respostas →</a>
+        </div>
+        <div class="quick">
+          <h3>🔒 Privacidade e dados</h3>
+          <p>Onde meus dados ficam. Como apagar tudo.</p>
+          <a href="#privacidade">Ver respostas →</a>
+        </div>
+        <div class="quick">
+          <h3>💬 Falar com alguém</h3>
+          <p>Resposta em até 24h em dia útil.</p>
+          <a href="#contato">Contato →</a>
+        </div>
+      </div>
+
+      <!-- PAGAMENTO -->
+      <section class="card" id="pagamento">
+        <h2>💳 Pagamento e PIX</h2>
+
+        <details>
+          <summary>Paguei o PIX mas o painel não liberou. O que fazer?</summary>
+          <p>
+            A liberação é automática em até 60 segundos após o banco confirmar.
+            Se passar disso, abra a página <strong>Planos</strong> da extensão e
+            clique em <strong>"Conferir agora"</strong>. Se ainda não liberar
+            em 5 minutos, escreva pra
+            <a href="mailto:suporte@guarda-cnpj.app">suporte@guarda-cnpj.app</a>
+            com o e-mail usado na compra e o comprovante PIX (capture a tela do
+            seu banco).
+          </p>
+        </details>
+
+        <details>
+          <summary>Como funciona o PIX no Guarda-CNPJ?</summary>
+          <p>
+            Você clica em "Assinar MEI Pro" ou "Garantir vitalício". Geramos um
+            QR Code PIX (Mercado Pago) e um código copia-cola. Você paga pelo
+            app do seu banco. Em segundos, o pagamento é confirmado e a licença
+            é ativada automaticamente no seu navegador. Você também recebe a
+            <strong>chave de licença</strong> por e-mail (use ela se reinstalar
+            em outro computador).
+          </p>
+        </details>
+
+        <details>
+          <summary>O QR Code expirou antes de eu pagar.</summary>
+          <p>
+            O QR Code do Mercado Pago expira em 30 minutos. Se expirou, é só
+            clicar de novo no plano e gerar um novo QR. Você não foi cobrado.
+          </p>
+        </details>
+
+        <details>
+          <summary>Fui cobrado duas vezes. Como resolver?</summary>
+          <p>
+            Mande o comprovante das duas cobranças para
+            <a href="mailto:suporte@guarda-cnpj.app">suporte@guarda-cnpj.app</a>.
+            Confirmamos o estorno da segunda cobrança em até 7 dias úteis.
+          </p>
+        </details>
+
+        <details>
+          <summary>Posso cancelar a assinatura mensal?</summary>
+          <p>
+            O plano mensal é pré-pago. Você usa por 30 dias após o pagamento.
+            Não há renovação automática — quando expira, você vê o paywall de
+            novo e decide se quer pagar mais um mês ou trocar para o vitalício.
+            <strong>Não cobramos cartão de crédito recorrente.</strong>
+          </p>
+        </details>
+
+        <details>
+          <summary>Política de reembolso</summary>
+          <p>
+            <strong>Plano mensal (R$ 9,99):</strong> sem reembolso de mensalidade
+            já paga.<br />
+            <strong>Plano vitalício (R$ 49,90):</strong> reembolso integral em
+            até <strong>7 dias</strong> após a compra, sem perguntas. Solicite
+            por e-mail com o ID da compra.
+          </p>
+        </details>
+      </section>
+
+      <!-- CHAVE / LICENÇA -->
+      <section class="card" id="chave">
+        <h2>🔑 Chave de licença e ativação</h2>
+
+        <details>
+          <summary>Não recebi o e-mail com a chave.</summary>
+          <p>
+            Cheque sua caixa de spam/promoções. O e-mail vem de
+            <code>onboarding@resend.dev</code> (em breve substituiremos por um
+            domínio próprio). Se mesmo assim não chegou, use a opção
+            <strong>"Esqueci a chave"</strong> dentro da extensão (Planos →
+            "Já comprou? Use sua chave" → "Esqueci a chave"). Vai chegar um
+            código de 6 dígitos no e-mail.
+          </p>
+        </details>
+
+        <details>
+          <summary>Reinstalei o Chrome / formatei o PC. Como recuperar?</summary>
+          <p>
+            Sua chave continua válida. Reinstale a extensão, vá em
+            <strong>Planos → "Ativar com chave"</strong>, informe o e-mail e a
+            chave que você recebeu. A licença é reativada na hora.
+          </p>
+        </details>
+
+        <details>
+          <summary>Quantos dispositivos posso usar com a mesma chave?</summary>
+          <p>
+            Por padrão, <strong>2 dispositivos</strong>. Se você usar em mais,
+            o primeiro a tentar ativar prevalece e os anteriores são desativados.
+            Se você é contador e precisa de mais, escreva pra gente.
+          </p>
+        </details>
+
+        <details>
+          <summary>Erro "Chave inválida" ao ativar.</summary>
+          <p>
+            Verifique se está digitando exatamente como recebeu (sem espaços
+            extras). A chave costuma ter formato <code>GCNPJ-XXXX-XXXX-XXXX</code>.
+            Se persistir, mande o e-mail usado e a chave que está tentando para
+            <a href="mailto:suporte@guarda-cnpj.app">suporte@guarda-cnpj.app</a>.
+          </p>
+        </details>
+      </section>
+
+      <!-- USO / FUNCIONAMENTO -->
+      <section class="card" id="uso">
+        <h2>🛡️ Como usar a extensão</h2>
+
+        <details>
+          <summary>Como o Guarda-CNPJ detecta mensagens nos portais?</summary>
+          <p>
+            <strong>Você</strong> abre o portal oficial e faz login com gov.br
+            normalmente. A extensão lê apenas o que está visível na tela (DOM
+            público da página). Nunca pedimos sua senha, nunca automatizamos
+            login, nunca usamos captcha-solvers. É leitura passiva: você está
+            logado, nós ajudamos a organizar.
+          </p>
+        </details>
+
+        <details>
+          <summary>Funciona em quantos CNPJs?</summary>
+          <p>
+            O plano MEI Pro cobre <strong>1 CNPJ</strong>. Em breve teremos
+            planos para contadores com múltiplos CNPJs.
+          </p>
+        </details>
+
+        <details>
+          <summary>Sou contador. Posso usar pra meus clientes?</summary>
+          <p>
+            Hoje, o plano cobre 1 CNPJ por instalação. Estamos preparando os
+            planos <strong>Contador Start (30 CNPJs)</strong>,
+            <strong>Contador Pro (100)</strong> e
+            <strong>Escritório Plus (300)</strong>. Quer ser avisado quando
+            lançarmos? Escreva
+            <a href="mailto:contador@guarda-cnpj.app">contador@guarda-cnpj.app</a>.
+          </p>
+        </details>
+
+        <details>
+          <summary>A extensão vai funcionar pra sempre?</summary>
+          <p>
+            Sim, enquanto os portais oficiais existirem e mantiverem estruturas
+            HTML compatíveis. Quando o gov muda algum portal, atualizamos a
+            extensão (geralmente no mesmo dia). O vitalício inclui essas
+            atualizações sem custo.
+          </p>
+        </details>
+      </section>
+
+      <!-- PRIVACIDADE -->
+      <section class="card" id="privacidade">
+        <h2>🔒 Privacidade e dados</h2>
+
+        <details>
+          <summary>Vocês têm acesso aos meus dados?</summary>
+          <p>
+            <strong>Não.</strong> Todos os seus dados (CNPJ, anotações,
+            mensagens registradas, valores, vencimentos) ficam no seu navegador
+            (chrome.storage.local + IndexedDB). Não enviamos nada para servidor
+            externo. A única coisa que sai do seu PC é a confirmação de licença
+            (e-mail + chave) para validar pagamento.
+          </p>
+        </details>
+
+        <details>
+          <summary>Como exportar tudo o que tenho salvo?</summary>
+          <p>
+            Em <strong>Configurações → Exportar tudo (JSON)</strong>. Você baixa
+            um arquivo com 100% dos seus dados. Use para backup ou portabilidade
+            (LGPD).
+          </p>
+        </details>
+
+        <details>
+          <summary>Como apagar todos os meus dados?</summary>
+          <p>
+            Em <strong>Configurações → Excluir todos os dados</strong>. Após
+            confirmação, tudo é apagado do seu navegador (incluindo licença
+            local). Operação irreversível.
+          </p>
+        </details>
+
+        <details>
+          <summary>O que é a "senha mestre"?</summary>
+          <p>
+            É opcional. Se você ativar, criptografamos seus dados sensíveis
+            (valores monetários, números de processo, textos completos de
+            mensagens) com AES-256-GCM usando uma senha que só você sabe. Útil
+            se outras pessoas usam seu PC. <strong>Importante:</strong> se
+            esquecer, não dá pra recuperar — guarde em local seguro.
+          </p>
+        </details>
+      </section>
+
+      <!-- CONTATO -->
+      <section class="card" id="contato">
+        <h2>💬 Falar com a gente</h2>
+        <p>Atendemos em dias úteis das 9h às 18h. Tempo médio de resposta: 24h.</p>
+
+        <div class="contact">
+          <h3>Suporte geral</h3>
+          <p>Para qualquer dúvida sobre uso, pagamento, licença, privacidade.</p>
+          <a class="email" href="mailto:suporte@guarda-cnpj.app">
+            ✉️ suporte@guarda-cnpj.app
+          </a>
+        </div>
+
+        <div class="contact">
+          <h3>Privacidade / LGPD <span class="pill">DPO</span></h3>
+          <p>
+            Para exercer direitos LGPD: acesso, correção, exclusão,
+            portabilidade dos seus dados.
+          </p>
+          <a class="email" href="mailto:privacidade@guarda-cnpj.app">
+            ✉️ privacidade@guarda-cnpj.app
+          </a>
+        </div>
+
+        <div class="contact">
+          <h3>Contadores e parcerias</h3>
+          <p>
+            Plano para escritórios contábeis, programa de afiliados, integrações
+            white-label.
+          </p>
+          <a class="email" href="mailto:contador@guarda-cnpj.app">
+            ✉️ contador@guarda-cnpj.app
+          </a>
+        </div>
+
+        <div class="contact">
+          <h3>Imprensa e mídia</h3>
+          <p>Entrevistas, dados de mercado, releases.</p>
+          <a class="email" href="mailto:imprensa@guarda-cnpj.app">
+            ✉️ imprensa@guarda-cnpj.app
+          </a>
+        </div>
+      </section>
+
+      <!-- INFO ENVIAR -->
+      <section class="card">
+        <h2>📋 Quando escrever, incluir:</h2>
+        <ul>
+          <li><strong>E-mail usado na compra</strong> (se já comprou)</li>
+          <li><strong>Plano comprado</strong> (mensal / vitalício)</li>
+          <li><strong>Descrição do problema</strong> em uma frase</li>
+          <li><strong>Screenshot</strong> se houver tela de erro</li>
+          <li>
+            <strong>Versão do Chrome:</strong> abra <code>chrome://version</code>
+            e copie a primeira linha
+          </li>
+          <li>
+            <strong>Versão da extensão:</strong> abra
+            <code>chrome://extensions/</code>, clique em Detalhes do Guarda-CNPJ
+          </li>
+        </ul>
+        <p>Quanto mais detalhe, mais rápido resolvemos.</p>
+      </section>
+    </main>
+
+    <footer>
+      © 2026 Guarda-CNPJ · Ferramenta privada e independente ·
+      <a href="index.html">Início</a> ·
+      <a href="privacy.html">Privacidade</a> ·
+      <a href="terms.html">Termos</a>
+    </footer>
+  </body>
+</html>
