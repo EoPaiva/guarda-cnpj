@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guarda-CNPJ — O alarme anti-prazo perdido do MEI</title>
+    <meta
+      name="description"
+      content="Extensão Chrome para MEI e pequenos CNPJs acompanharem comunicações oficiais em DTE-SN, Domicílio Judicial, DET e e-CAC. Sem armazenar senha gov.br."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body {
+        font-family: "Inter", system-ui, sans-serif;
+        line-height: 1.6;
+        color: #0f172a;
+        background: #f8fafc;
+      }
+      header {
+        background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%);
+        color: white;
+        padding: 4rem 1.5rem 5rem;
+        text-align: center;
+      }
+      header .badge {
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.15);
+        padding: 0.4rem 1rem;
+        border-radius: 999px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 1rem;
+      }
+      header h1 {
+        font-size: clamp(1.8rem, 4vw, 3rem);
+        font-weight: 800;
+        margin-bottom: 1rem;
+      }
+      header p {
+        font-size: 1.1rem;
+        opacity: 0.92;
+        max-width: 680px;
+        margin: 0 auto 2rem;
+      }
+      .ctas {
+        display: flex;
+        gap: 0.75rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.2s;
+      }
+      .btn-primary {
+        background: white;
+        color: #1e40af;
+      }
+      .btn-primary:hover {
+        background: #f1f5f9;
+      }
+      .btn-ghost {
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+      }
+      .btn-ghost:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+      main {
+        max-width: 960px;
+        margin: -3rem auto 0;
+        padding: 0 1.5rem 4rem;
+      }
+      section {
+        background: white;
+        border-radius: 1rem;
+        padding: 2rem;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      }
+      h2 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+      }
+      h3 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-top: 1.2rem;
+        margin-bottom: 0.4rem;
+      }
+      p, li {
+        color: #475569;
+        margin-bottom: 0.5rem;
+      }
+      ul {
+        padding-left: 1.5rem;
+      }
+      .features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+      .feature {
+        padding: 1rem;
+        border: 1px solid #e2e8f0;
+        border-radius: 0.5rem;
+      }
+      .feature strong {
+        color: #0f172a;
+        display: block;
+        margin-bottom: 0.25rem;
+      }
+      .pricing {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+      .plan {
+        padding: 1.5rem;
+        border: 2px solid #e2e8f0;
+        border-radius: 0.75rem;
+      }
+      .plan.featured {
+        border-color: #2563eb;
+        background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%);
+      }
+      .plan h3 {
+        margin-top: 0;
+      }
+      .price {
+        font-size: 2rem;
+        font-weight: 800;
+        color: #0f172a;
+        margin: 0.5rem 0;
+      }
+      .price span {
+        font-size: 0.9rem;
+        color: #64748b;
+        font-weight: 400;
+      }
+      footer {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem;
+        font-size: 0.85rem;
+        color: #64748b;
+        border-top: 1px solid #e2e8f0;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+      footer a {
+        color: #2563eb;
+        text-decoration: none;
+        margin-right: 1rem;
+      }
+      .pill {
+        display: inline-block;
+        background: #fef3c7;
+        color: #92400e;
+        padding: 0.2rem 0.6rem;
+        border-radius: 999px;
+        font-size: 0.75rem;
+        font-weight: 600;
+      }
+      @media (max-width: 640px) {
+        .pricing { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="badge">Aviso importante para MEIs em 2026</div>
+      <h1>O alarme anti-prazo perdido do seu CNPJ</h1>
+      <p>
+        Nunca mais dependa da sorte para saber se seu CNPJ recebeu uma
+        comunicação oficial em DTE-SN, Domicílio Judicial, DET ou e-CAC.
+      </p>
+      <div class="ctas">
+        <a class="btn btn-primary" href="#instalar">Instalar no Chrome</a>
+        <a class="btn btn-ghost" href="privacy.html">Política de privacidade</a>
+      </div>
+    </header>
+
+    <main>
+      <section>
+        <h2>O que faz</h2>
+        <p>
+          Extensão Chrome paga (R$ 9,99/mês ou R$ 49,90 vitalício) que ajuda MEI,
+          microempresas e pequenos CNPJs a acompanhar comunicações oficiais.
+        </p>
+        <div class="features">
+          <div class="feature">
+            <strong>Detecção automática</strong>
+            Quando você está logado num portal oficial, lemos o DOM e capturamos
+            mensagens, valores e vencimentos.
+          </div>
+          <div class="feature">
+            <strong>Lembretes inteligentes</strong>
+            Notificação do navegador e badge no ícone com pendências
+            calculadas pela frequência escolhida.
+          </div>
+          <div class="feature">
+            <strong>Relatório para contador</strong>
+            PDF, CSV e mensagem pronta para WhatsApp ou e-mail.
+          </div>
+          <div class="feature">
+            <strong>Classificação de risco</strong>
+            Cada mensagem ganha um nível (normal, atenção, urgente). Você sabe
+            o que olhar primeiro.
+          </div>
+          <div class="feature">
+            <strong>Criptografia opcional</strong>
+            Senha mestre + AES-256 para dados sensíveis. Senha gov.br NUNCA é
+            capturada.
+          </div>
+          <div class="feature">
+            <strong>Tudo local</strong>
+            Dados ficam no <code>chrome.storage.local</code> + IndexedDB. Você
+            exporta ou apaga quando quiser.
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>O que NÃO faz <span class="pill">Importante</span></h2>
+        <ul>
+          <li>Não pede sua senha gov.br</li>
+          <li>Não automatiza login nem usa captcha-solver</li>
+          <li>Não armazena cookies de sessão</li>
+          <li>Não monitora 24/7 sem você abrir os portais</li>
+          <li>Não se comunica com servidor externo (dados ficam no seu navegador)</li>
+          <li>Não substitui contador, advogado ou órgão público</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Planos</h2>
+        <div class="pricing">
+          <div class="plan">
+            <h3>MEI Pro</h3>
+            <div class="price">R$ 9,99 <span>/ mês</span></div>
+            <ul>
+              <li>1 CNPJ monitorado</li>
+              <li>Os 4 portais oficiais</li>
+              <li>Lembretes, histórico, alertas</li>
+              <li>Relatório para contador</li>
+              <li>Exportação CSV/PDF</li>
+            </ul>
+          </div>
+          <div class="plan featured">
+            <h3>MEI Pro Vitalício</h3>
+            <div class="price">R$ 49,90 <span>uma vez</span></div>
+            <ul>
+              <li>Acesso vitalício</li>
+              <li>1 CNPJ monitorado</li>
+              <li>Atualizações futuras</li>
+              <li>Sem mensalidade</li>
+              <li>Oferta de lançamento</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="instalar">
+        <h2>Como instalar</h2>
+        <ol style="padding-left: 1.5rem; color: #475569;">
+          <li>
+            Em breve disponível na
+            <a href="#" style="color:#2563eb;">Chrome Web Store</a>.
+          </li>
+          <li>Clique em "Adicionar ao Chrome".</li>
+          <li>Fixe o ícone do Guarda-CNPJ na barra do navegador.</li>
+          <li>Faça o onboarding (5 minutos).</li>
+          <li>Ative o MEI Pro e proteja seu CNPJ.</li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>Documentação legal</h2>
+        <ul>
+          <li><a href="privacy.html" style="color:#2563eb;">Política de Privacidade</a></li>
+          <li><a href="terms.html" style="color:#2563eb;">Termos de Uso</a></li>
+          <li><a href="non-affiliation.html" style="color:#2563eb;">Aviso de Não Afiliação com Governo</a></li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <div>© 2026 Guarda-CNPJ · Ferramenta privada e independente</div>
+      <div>
+        <a href="privacy.html">Privacidade</a>
+        <a href="terms.html">Termos</a>
+        <a href="mailto:contato@guarda-cnpj.app">Contato</a>
+      </div>
+    </footer>
+  </body>
+</html>

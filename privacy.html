@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Política de Privacidade — Guarda-CNPJ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body { font-family: "Inter", system-ui, sans-serif; line-height: 1.7; color: #0f172a; background: #f8fafc; }
+      nav { background: #1e40af; color: white; padding: 1rem 1.5rem; }
+      nav a { color: white; text-decoration: none; margin-right: 1.5rem; font-weight: 600; }
+      main { max-width: 800px; margin: 0 auto; padding: 3rem 1.5rem; }
+      h1 { font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem; }
+      .meta { color: #64748b; margin-bottom: 2rem; font-size: 0.9rem; }
+      h2 { font-size: 1.4rem; font-weight: 700; margin-top: 2.5rem; margin-bottom: 0.75rem; color: #1e293b; }
+      h3 { font-size: 1.1rem; font-weight: 600; margin-top: 1.5rem; margin-bottom: 0.5rem; }
+      p { margin-bottom: 0.75rem; color: #475569; }
+      ul, ol { padding-left: 1.5rem; margin-bottom: 0.75rem; }
+      li { color: #475569; margin-bottom: 0.3rem; }
+      strong { color: #0f172a; }
+      .callout { background: #fef3c7; border-left: 4px solid #f59e0b; padding: 1rem 1.5rem; border-radius: 0 0.5rem 0.5rem 0; margin: 1rem 0; color: #92400e; }
+      .callout strong { color: #78350f; }
+      code { background: #f1f5f9; padding: 0.1rem 0.4rem; border-radius: 0.25rem; font-size: 0.9em; }
+      footer { text-align: center; padding: 2rem 1.5rem; color: #64748b; font-size: 0.85rem; border-top: 1px solid #e2e8f0; }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="index.html">Guarda-CNPJ</a>
+      <a href="privacy.html">Privacidade</a>
+      <a href="terms.html">Termos</a>
+      <a href="non-affiliation.html">Não Afiliação</a>
+    </nav>
+
+    <main>
+      <h1>Política de Privacidade</h1>
+      <p class="meta">Última atualização: 21 de maio de 2026 · Versão 1.0</p>
+
+      <div class="callout">
+        <strong>Resumo rápido:</strong> O Guarda-CNPJ guarda todos os seus dados
+        localmente no seu navegador. Não enviamos nada para servidores externos.
+        Não coletamos senha gov.br. Você pode exportar ou apagar tudo a qualquer
+        momento.
+      </div>
+
+      <h2>1. Quem somos</h2>
+      <p>
+        O Guarda-CNPJ é uma extensão Chrome privada e independente desenvolvida
+        para ajudar MEIs, microempresas e pequenos CNPJs a acompanhar
+        comunicações oficiais em portais do governo brasileiro.
+      </p>
+      <p>
+        Não somos órgão público, não representamos a Receita Federal, o Governo
+        Federal, o CNJ, a Justiça do Trabalho ou qualquer entidade oficial.
+      </p>
+
+      <h2>2. Que dados coletamos</h2>
+
+      <h3>2.1. Dados que você fornece manualmente</h3>
+      <ul>
+        <li>Nome e e-mail do responsável</li>
+        <li>CNPJ, razão social, regime tributário, cidade e UF</li>
+        <li>Nome e e-mail do contador (opcional)</li>
+        <li>Telefone (opcional)</li>
+        <li>Anotações e observações</li>
+      </ul>
+
+      <h3>2.2. Dados capturados quando você abre portais oficiais logado</h3>
+      <p>
+        Quando você navega em portais como DTE-SN, e-CAC, DET ou Domicílio
+        Judicial <strong>e está logado com gov.br</strong>, nossa extensão lê o
+        DOM da página (a parte visível) para extrair:
+      </p>
+      <ul>
+        <li>Títulos de mensagens da caixa postal</li>
+        <li>Datas, valores e vencimentos de obrigações fiscais</li>
+        <li>Status fiscal indicado na página</li>
+        <li>Indicadores de mensagens não lidas</li>
+      </ul>
+
+      <h3>2.3. O que NÃO coletamos</h3>
+      <ul>
+        <li><strong>Senha gov.br ou qualquer credencial</strong></li>
+        <li>Cookies de sessão (apenas detectamos presença, sem armazenar valor)</li>
+        <li>Histórico de navegação fora dos portais oficiais</li>
+        <li>Dados de outras abas ou outros sites</li>
+        <li>Localização geográfica</li>
+        <li>Identificadores de dispositivo</li>
+      </ul>
+
+      <h2>3. Onde os dados ficam armazenados</h2>
+      <p>
+        Todos os dados ficam exclusivamente no seu navegador, em:
+      </p>
+      <ul>
+        <li><code>chrome.storage.local</code> — para configurações e estado</li>
+        <li><code>IndexedDB</code> (via Dexie.js) — para histórico, mensagens, obrigações</li>
+      </ul>
+      <p>
+        <strong>Nenhum dado é enviado para servidores externos por padrão.</strong>
+        A única exceção é a verificação de licença (quando você ativa um plano
+        pago), que envia apenas o número da licença para confirmação.
+      </p>
+
+      <h2>4. Criptografia opcional</h2>
+      <p>
+        Você pode ativar uma senha mestre para criptografar dados sensíveis
+        (valores monetários, números de processo, textos completos de
+        mensagens) com AES-256-GCM e PBKDF2 (100.000 iterações).
+      </p>
+      <p>
+        A senha mestre não é armazenada e <strong>não pode ser recuperada se você esquecer</strong>.
+      </p>
+
+      <h2>5. Finalidade do tratamento</h2>
+      <p>Os dados são tratados exclusivamente para:</p>
+      <ul>
+        <li>Mostrar seu painel personalizado</li>
+        <li>Calcular lembretes e prazos</li>
+        <li>Gerar relatórios para você e seu contador</li>
+        <li>Classificar risco de mensagens</li>
+        <li>Validar sua licença ativa</li>
+      </ul>
+
+      <h2>6. Compartilhamento</h2>
+      <p>
+        <strong>Não vendemos, não alugamos e não compartilhamos seus dados com terceiros</strong>,
+        exceto quando você explicitamente exporta ou envia (por exemplo, ao gerar
+        um relatório e enviar ao seu contador).
+      </p>
+
+      <h2>7. Base legal (LGPD)</h2>
+      <p>
+        Tratamos seus dados com base em:
+      </p>
+      <ul>
+        <li><strong>Execução de contrato</strong> (Art. 7º, V da LGPD): para entregar o serviço contratado</li>
+        <li><strong>Consentimento</strong> (Art. 7º, I): para funcionalidades opcionais como IA (quando disponível)</li>
+        <li><strong>Legítimo interesse</strong> (Art. 7º, IX): para classificação de risco baseada em regex</li>
+      </ul>
+
+      <h2>8. Seus direitos</h2>
+      <p>De acordo com a LGPD, você tem direito a:</p>
+      <ul>
+        <li><strong>Acesso</strong>: ver todos os dados que armazenamos</li>
+        <li><strong>Correção</strong>: editar dados incorretos ou desatualizados</li>
+        <li><strong>Exclusão</strong>: apagar tudo (botão "Excluir todos os dados" em Configurações)</li>
+        <li><strong>Portabilidade</strong>: exportar tudo em JSON estruturado</li>
+        <li><strong>Revogação de consentimento</strong>: a qualquer momento</li>
+      </ul>
+      <p>
+        Para exercer qualquer direito, basta usar as opções da própria extensão
+        ou nos enviar e-mail (abaixo).
+      </p>
+
+      <h2>9. Retenção</h2>
+      <p>
+        Mantemos seus dados pelo tempo em que a extensão estiver instalada. Se
+        você desinstalar, o Chrome remove todo o armazenamento local
+        automaticamente.
+      </p>
+
+      <h2>10. Crianças</h2>
+      <p>
+        O Guarda-CNPJ não é direcionado a menores de 18 anos e não coleta
+        conscientemente dados de menores.
+      </p>
+
+      <h2>11. Alterações</h2>
+      <p>
+        Esta política pode ser atualizada. Mudanças significativas serão
+        comunicadas dentro da extensão e nesta página com data de revisão.
+      </p>
+
+      <h2>12. Contato</h2>
+      <p>
+        Para questões sobre privacidade ou para exercer seus direitos LGPD:
+      </p>
+      <p>
+        E-mail: <a href="mailto:privacidade@guarda-cnpj.app" style="color:#2563eb;">privacidade@guarda-cnpj.app</a><br />
+        Encarregado de Dados (DPO): em definição
+      </p>
+      <p>
+        Você também pode contatar a Autoridade Nacional de Proteção de Dados
+        (ANPD) em <a href="https://www.gov.br/anpd/pt-br" style="color:#2563eb;">gov.br/anpd</a>.
+      </p>
+    </main>
+
+    <footer>
+      © 2026 Guarda-CNPJ · <a href="index.html" style="color:#2563eb;">Voltar ao início</a>
+    </footer>
+  </body>
+</html>
